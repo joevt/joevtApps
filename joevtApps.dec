@@ -1,0 +1,66 @@
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = joevtApps
+  PACKAGE_GUID                   = a5e15862-526d-4134-97d1-f7dcc0bc17a6
+  PACKAGE_VERSION                = 0.01
+
+[Guids]
+  gAppPkgTokenSpaceGuid                 =  {0xe7e1efa6, 0x7607, 0x4a78, {0xa7, 0xdd, 0x43, 0xe4, 0xbd, 0x72, 0xc0, 0x99}}
+  gCometlakeOpenBoardPkgTokenSpaceGuid  =  {0xfe2ab368, 0x7cc1, 0x4de8, {0xb7, 0x19, 0xad, 0x56, 0xee, 0xb8, 0xcc, 0x84}}
+  gTbtInfoHobGuid                       =  {0x74a81eaa, 0x033c, 0x4783, {0xbe, 0x2b, 0x84, 0x85, 0x74, 0xa6, 0x97, 0xb7}}
+  gSiPkgTokenSpaceGuid                  =  {0x977c97c1, 0x47e1, 0x4b6b, {0x96, 0x69, 0x43, 0x66, 0x99, 0xcb, 0xe4, 0x5b}}
+
+[Protocols]
+ #gTbtNvsAreaProtocolGuid               =  {0x4d6a54d1, 0xcd56, 0x47f3, {0x93, 0x6e, 0x7e, 0x51, 0xd9, 0x31, 0x15, 0x4f}}
+  gDxeTbtPolicyProtocolGuid             =  {0x196bf9e3, 0x20d7, 0x4b7b, {0x89, 0xf9, 0x31, 0xc2, 0x72, 0x08, 0xc9, 0xb9}}
+
+[Ppis]
+  gPeiTbtPolicyPpiGuid                  = {0xd7e7e1e6, 0xcbec, 0x4f5f, {0xae, 0xd3, 0xfd, 0xc0, 0xa8, 0xb0, 0x7e, 0x25}}
+
+[LibraryClasses]
+  #PeiLib|Include/Library/PeiLib.h
+
+
+[PcdsFixedAtBuild]
+
+gSiPkgTokenSpaceGuid.PcdAcpiBaseAddress|0x1800|UINT16|0x00010035
+
+# TBT
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtBootOn |0|UINT8|0x000000E9
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtUsbOn |0|UINT8|0x000000EA
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtGpio3ForcePwr |0|UINT8|0x000000EB
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtGpio3ForcePwrDly |0|UINT16|0x000000ED
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtControllerEn |0|UINT8|0x000000EE
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtControllerType |0|UINT8|0x000000EF
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPcieRpNumber |0|UINT8|0x000000F0
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtGpioAccessType |0|UINT8|0x000000F1
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdExpander |0|UINT8|0x000000F2
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtGpioLevel |0|BOOLEAN|0x000000F3
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtForcepowerGpioPad |0|UINT32|0x000000F4
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtCioPlugEventGpioPad |0|UINT32|0x000000F5
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtAcpiGpeSignature |0|UINT32|0x000000F6
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtAcpiGpeSignaturePorting |0|BOOLEAN|0x000000F7
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtSecurityMode |0|UINT8|0x000000F8
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtGpio5Filter |0|UINT8|0x000000F9
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtWakeupSupport |0|UINT8|0x000000FA
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtHotSMI |0|UINT8|0x000000FB
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtHotNotify |0|UINT8|0x000000FC
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtSetClkReq|0|UINT8|0x000000FD
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtAspm |0|UINT8|0x000000FE
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtLtr | 0 | UINT8| 0x00000116
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtAcDcSwitch |0|UINT8|0x000000FF
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdRtd3Tbt |0|UINT8|0x00000100
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdRtd3TbtClkReq |0|UINT8|0x0000010A
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtWin10Support |0|UINT8|0x000000102
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdRtd3TbtClkReqDelay |0|UINT16|0x00000103
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdRtd3TbtOffDelay |0|UINT16|0x00000104
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPcieExtraBusRsvd |0|UINT8|0x00000105
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPcieMemRsvd |0|UINT16|0x00000106
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPcieMemAddrRngMax |0|UINT8|0x00000107
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPciePMemRsvd |0|UINT16|0x00000108
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPciePMemAddrRngMax |0|UINT8|0x00000109
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdPchPcieRootPortHpe|0|UINT32|0x00000117
+
+## Tbt SW_SMI_DTBT_ENUMERATEgSetupVariableGuid
+gCometlakeOpenBoardPkgTokenSpaceGuid.PcdSwSmiDTbtEnumerate|0xF7|UINT8|0x000000110

@@ -1,0 +1,39 @@
+[Defines]
+  INF_VERSION                    = 1.25
+  BASE_NAME                      = ReloadPCIRom 
+  FILE_GUID                      = 3beed84e-201a-4a77-9e5c-c255b7da47de
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 0.9
+  ENTRY_POINT                    = ReloadPCIRomEntryPoint
+  UNLOAD_IMAGE                   = ReloadPCIRomUnload
+  VALID_ARCHITECTURES            = X64
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  ShellPkg/ShellPkg.dec
+
+[LibraryClasses]
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  UefiDriverEntryPoint
+  DebugLib
+  PrintLib
+  #ShellLib
+  BaseLib
+  BaseMemoryLib
+  UefiLib
+  HandleParsingLib
+
+[Sources]
+  ReloadPCIRom.c
+  ReloadPCIRom.h
+
+[Depex]
+
+[Pcd]
+
+[Guids]
+
+[Protocols]
+  gEfiPciIoProtocolGuid

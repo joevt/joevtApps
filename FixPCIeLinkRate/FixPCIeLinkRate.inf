@@ -1,0 +1,97 @@
+[Defines]
+  INF_VERSION                    = 1.25
+  BASE_NAME                      = FixPCIeLinkRate 
+  FILE_GUID                      = 3beed84e-201a-4a77-9e5c-c255b7da47de
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 0.9
+  ENTRY_POINT                    = FixPCIeLinkRateEntryPoint
+  VALID_ARCHITECTURES            = X64
+
+[Packages]
+  joevtApps/joevtApps.dec
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  ShellPkg/ShellPkg.dec
+
+[LibraryClasses]
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  UefiDriverEntryPoint
+  DebugLib
+  PrintLib
+  #ShellLib
+  BaseLib
+  BaseMemoryLib
+  UefiLib
+  HandleParsingLib
+
+[Sources]
+  FixPCIeLinkRate.c
+  FixPCIeLinkRate.h
+  ../pciids/pciidsInternal.c
+  ../pciids/pciidsInternal.h
+  ../pciids/pciidsFile.c
+  ../pciids/pciidsFile.h
+  ../PciMisc/PciIoDevice.h
+  ../PciMisc/PciIoDevice.c
+#  ../Thunderbolt/Thunderbolt.c
+#  ../Thunderbolt/Thunderbolt.h
+
+[Depex]
+
+[Ppis]
+  gPeiTbtPolicyPpiGuid                          ## CONSUMES
+
+[Pcd]
+  gEfiMdePkgTokenSpaceGuid.PcdPciExpressBaseAddress  ## CONSUMES
+
+  gSiPkgTokenSpaceGuid.PcdAcpiBaseAddress
+
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtBootOn
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtUsbOn
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtGpio3ForcePwr
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtGpio3ForcePwrDly
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtControllerEn
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtControllerType
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPcieRpNumber
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtGpioAccessType            ## no code
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdExpander                      ## no code
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtGpioLevel                 ## no code
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtForcepowerGpioPad         ## no code
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtCioPlugEventGpioPad
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtAcpiGpeSignature          ## no code
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtAcpiGpeSignaturePorting   ## no code
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtSecurityMode              
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtGpio5Filter               
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtWakeupSupport             
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtHotSMI                    
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtHotNotify                 
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtSetClkReq		            
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtAspm                     
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtLtr              			## no code
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtAcDcSwitch                
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdRtd3Tbt                       
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdRtd3TbtClkReq                 
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtWin10Support              
+ #gCometlakeOpenBoardPkgTokenSpaceGuid.PcdRtd3TbtClkReqDelay            ## no code
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdRtd3TbtOffDelay               
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPcieExtraBusRsvd  
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPcieMemRsvd
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPcieMemAddrRngMax
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPciePMemRsvd
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdDTbtPciePMemAddrRngMax
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdPchPcieRootPortHpe
+
+  gCometlakeOpenBoardPkgTokenSpaceGuid.PcdSwSmiDTbtEnumerate
+
+[Guids]
+  gTbtInfoHobGuid                               ## CONSUMES
+
+[Protocols]
+  gEfiPciIoProtocolGuid
+  gDxeTbtPolicyProtocolGuid
+
+[BuildOptions]
+  XCODE:*_*_*_CC_FLAGS = -DDO_PCIIDS=0 -DDO_THUNDERBOLT=0 -DDO_SEARCHFORHIDDENDEVICES=0
+  GCC:*_*_*_CC_FLAGS   = -DDO_PCIIDS=0 -DDO_THUNDERBOLT=0 -DDO_SEARCHFORHIDDENDEVICES=0
+  MSFT:*_*_*_CC_FLAGS  = -DDO_PCIIDS=0 -DDO_THUNDERBOLT=0 -DDO_SEARCHFORHIDDENDEVICES=0

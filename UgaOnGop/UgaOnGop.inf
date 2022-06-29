@@ -1,0 +1,43 @@
+[Defines]
+  INF_VERSION                    = 1.25
+  BASE_NAME                      = UgaOnGop 
+  FILE_GUID                      = ce4f7a5a-dbbd-4217-8159-ec3ccdecdc47
+  MODULE_TYPE                    = UEFI_DRIVER
+  VERSION_STRING                 = 0.9
+  ENTRY_POINT                    = UgaOnGopEntryPoint
+  UNLOAD_IMAGE                   = UgaOnGopUnload
+  VALID_ARCHITECTURES            = X64
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  ShellPkg/ShellPkg.dec
+  OpenCorePkg/OpenCorePkg.dec
+
+[LibraryClasses]
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  UefiDriverEntryPoint
+  DebugLib
+  PrintLib
+  #ShellLib
+  BaseLib
+  BaseMemoryLib
+  UefiLib
+  HandleParsingLib
+  OcConsoleLib
+  OcMiscLib
+
+[Sources]
+  UgaOnGop.c
+  UgaOnGop.h
+  #UgaPassThrough.c
+
+[Depex]
+
+[Pcd]
+
+[Guids]
+
+[Protocols]
+  gEfiPciIoProtocolGuid

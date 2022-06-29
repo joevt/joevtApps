@@ -1,0 +1,39 @@
+[Defines]
+  INF_VERSION                    = 1.25
+  BASE_NAME                      = FakeUEFI2 
+  FILE_GUID                      = fae59db0-0655-4bfc-bb70-b0430f55c6be
+  MODULE_TYPE                    = DXE_RUNTIME_DRIVER
+  VERSION_STRING                 = 0.9
+  ENTRY_POINT                    = FakeUEFI2EntryPoint
+  UNLOAD_IMAGE                   = FakeUEFI2Unload
+  VALID_ARCHITECTURES            = X64
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+
+[LibraryClasses]
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  UefiDriverEntryPoint
+  DebugLib
+  PrintLib
+  BaseLib
+  BaseMemoryLib
+  UefiLib
+  DxeServicesTableLib
+
+[Sources]
+  FakeUEFI2.c
+  FakeUEFI2.h
+
+[Depex]
+  TRUE
+
+[Pcd]
+
+[Guids]
+  gEfiEventExitBootServicesGuid
+  gEfiEventVirtualAddressChangeGuid
+  gEfiEventReadyToBootGuid
+  gEfiDxeServicesTableGuid
